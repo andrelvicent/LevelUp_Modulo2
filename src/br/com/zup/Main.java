@@ -1,5 +1,7 @@
 package br.com.zup;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,7 +20,8 @@ public class Main {
             // Menu - Apresentar uma série de opcoes pro usuario
             System.out.println("Digite 1: Para cadastrar um aluno");
             System.out.println("Digite 2: Para exibir a lista");
-            System.out.println("Digite 3: Para sair do programa");
+            System.out.println("Digite 3: Para remover um aluno da lista usando o email");
+            System.out.println("Digite 4: Para sair do programa");
 
             opcao = leitor.nextInt();
             leitor.nextLine();
@@ -40,7 +43,26 @@ public class Main {
                     System.out.println("Contato: " + alunos.get(chaveAluno) + " Email: " + chaveAluno);
                 }
 
-            } else if (opcao == 3) {
+            } else if (opcao == 3){
+                System.out.println("Por favor, digite o email a ser deletado: ");
+                String emailDeletado = "";
+                String emailASerDeletado = leitor.nextLine();
+
+                for (String emailAluno : alunos.keySet()){
+
+                    if (emailAluno.equals(emailASerDeletado)){
+                        System.out.println("Email deletado com sucesso. ");
+                        emailDeletado = emailASerDeletado;
+                        // alunos.remove(emailASerDeletado);
+                        // break; Outra possibilidade
+                    }else{
+                        System.out.println("Email não encontrado. ");
+                    }
+                }
+                alunos.remove(emailDeletado);
+            }
+
+            else if (opcao == 4) {
                 // Sair do menu
                 chave = false;
             } else {
