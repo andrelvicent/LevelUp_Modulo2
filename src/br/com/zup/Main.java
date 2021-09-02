@@ -35,8 +35,22 @@ public class Main {
                 System.out.println("Digite o seu e-mail: ");
                 String email = leitor.nextLine();
 
+                if (alunos.size() != 0 ){
+                    for (String verificarChave:alunos.keySet() ) {
+
+                        if (verificarChave.equals(email)){
+                            System.out.println("Este email já foi cadastrado.");
+                        } else{
+                            alunos.put(email, "Nome: " + nome + " Telefone: " + telefone);
+                            System.out.println("Usuário cadastrado com sucesso. ");
+                        }
+                    }
+                }else{
+                    alunos.put(email, "Nome: " + nome + " Telefone: " + telefone);
+                    System.out.println("Usuário cadastrado com sucesso. ");
+                }
+
                 // Fazendo o cadastro
-                alunos.put(email, "Nome: " + nome + " Telefone: " + telefone);
             } else if (opcao == 2) {
 
                 for (String chaveAluno : alunos.keySet()) {
