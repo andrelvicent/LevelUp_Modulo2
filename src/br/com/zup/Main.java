@@ -23,11 +23,14 @@ public class Main {
             System.out.println("Digite 3: Para remover um aluno da lista usando o email");
             System.out.println("Digite 4: Para sair do programa");
 
+            // Ler opção desejada do menu
             opcao = leitor.nextInt();
             leitor.nextLine();
 
+            // Cadastrar um usuário
             if (opcao == 1) {
-                // Cadastrar um aluno
+
+                // Entrada de dados
                 System.out.println("Digite o nome Completo do aluno: ");
                 String nome = leitor.nextLine();
                 System.out.println("Digite o seu telefone: ");
@@ -35,55 +38,62 @@ public class Main {
                 System.out.println("Digite o seu e-mail: ");
                 String email = leitor.nextLine();
 
-                if (alunos.size() != 0 ){
-                    for (String verificarChave:alunos.keySet() ) {
+                // Verificar emails duplicados
+                if (alunos.size() != 0) {
+                    for (String verificarChave : alunos.keySet()) {
 
-                        if (verificarChave.equals(email)){
+                        if (verificarChave.equals(email)) {
                             System.out.println("Este email já foi cadastrado.");
-                        } else{
+                        } else {
                             alunos.put(email, "Nome: " + nome + " Telefone: " + telefone);
                             System.out.println("Usuário cadastrado com sucesso. ");
                         }
                     }
-                }else{
+                } else {
                     alunos.put(email, "Nome: " + nome + " Telefone: " + telefone);
                     System.out.println("Usuário cadastrado com sucesso. ");
                 }
 
-                // Fazendo o cadastro
-            } else if (opcao == 2) {
+            }
+
+            // Listar usuários cadastrados
+            else if (opcao == 2) {
 
                 for (String chaveAluno : alunos.keySet()) {
                     System.out.println("Contato: " + alunos.get(chaveAluno) + " Email: " + chaveAluno);
                 }
 
-            } else if (opcao == 3){
+            }
+
+            // Remover um usuário pelo email
+            else if (opcao == 3) {
                 System.out.println("Por favor, digite o email a ser deletado: ");
                 String emailDeletado = "";
                 String emailASerDeletado = leitor.nextLine();
 
-                for (String emailAluno : alunos.keySet()){
+                for (String emailAluno : alunos.keySet()) {
 
-                    if (emailAluno.equals(emailASerDeletado)){
+                    if (emailAluno.equals(emailASerDeletado)) {
                         System.out.println("Email deletado com sucesso. ");
                         emailDeletado = emailASerDeletado;
                         // alunos.remove(emailASerDeletado);
                         // break; Outra possibilidade
-                    }else{
+                    } else {
                         System.out.println("Email não encontrado. ");
                     }
                 }
                 alunos.remove(emailDeletado);
             }
 
+            // Sair do menu
             else if (opcao == 4) {
-                // Sair do menu
                 chave = false;
-            } else {
+            }
+
+            // Mensagem de erro para opções inválidas
+            else {
                 System.out.println("Por favor, digite um valor válido. ");
             }
         }
-
-
     }
 }
