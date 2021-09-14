@@ -84,7 +84,7 @@ public class Main {
                 }
                 alunos.remove(emailDeletado);
             }
-
+            // 2,18
             // Sair do menu
             else if (opcao == 4) {
                 chave = false;
